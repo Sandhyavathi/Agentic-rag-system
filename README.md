@@ -11,33 +11,33 @@ A powerful Retrieval-Augmented Generation (RAG) system with advanced AI agents f
 - **Validation Agent**: Ensures response quality and accuracy
 - **Grading Agent**: Evaluates response quality and provides feedback
 
-### 📚 **Document Processing**
+### **Document Processing**
 - **Multi-format Support**: PDF, DOCX, PPTX, CSV, Excel files
 - **Smart Chunking**: Context-aware document segmentation
 - **Metadata Extraction**: Rich metadata from structured documents
 - **Table Processing**: Advanced table and figure extraction
 - **OCR Support**: Text extraction from scanned documents
 
-### 🎯 **Advanced Retrieval**
+### **Advanced Retrieval**
 - **Hybrid Search**: BM25 + Semantic search combination
 - **Re-ranking**: Multi-stage relevance ranking
 - **Query Expansion**: Automatic query enhancement
 - **Multi-vector Retrieval**: Multiple embedding strategies
 - **Confidence Scoring**: Response confidence estimation
 
-### 🤖 **LLM Integration**
+### **LLM Integration**
 - **Ollama Support**: Local LLM integration with llama3.2:3b
 - **Structured Output**: JSON response generation
 - **Streaming Support**: Real-time response generation
 - **Error Handling**: Robust error handling
 
-### 🗄️ **Vector Database**
+### **Vector Database**
 - **Milvus Integration**: High-performance vector storage
 - **Auto-scaling**: Dynamic resource management
 - **Multi-tenancy**: Support for multiple document collections
 - **Real-time Updates**: Live document indexing
 
-### 🎨 **Streamlit Frontend**
+### **Streamlit Frontend**
 - **File Upload Interface**: Drag-and-drop file upload
 - **Real-time Chat**: Interactive chat interface
 - **Processing Status**: Live file processing updates
@@ -69,13 +69,10 @@ Create a `.env` file with your configuration:
 # Copy the example configuration
 cp .env.example .env
 
-# Edit .env with your settings
-# Required: Set your Google AI Studio API key
-GOOGLE_API_KEY=your_google_api_key_here
 
 # Optional: Customize other settings
-LLM_PROVIDER=gemini
-LLM_MODEL=gemini-2.5-flash
+LLM_PROVIDER=ollama
+LLM_MODEL=llama3.2:3b
 MILVUS_HOST=localhost
 MILVUS_PORT=19530
 ```
@@ -158,9 +155,8 @@ Each response includes:
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `GOOGLE_API_KEY` | Google AI Studio API key | Required |
-| `LLM_PROVIDER` | LLM provider (gemini/ollama) | gemini |
-| `LLM_MODEL` | LLM model name | gemini-pro |
+| `LLM_PROVIDER` | LLM provider (gemini/ollama) | 
+| `LLM_MODEL` | LLM model name | llama3.2:3b |
 | `MILVUS_HOST` | Milvus database host | localhost |
 | `MILVUS_PORT` | Milvus database port | 19530 |
 | `EMBEDDING_DIM` | Embedding dimension | 384 |
@@ -205,20 +201,17 @@ See `src/core/config.py` for all configuration options and their descriptions.
 
 ### Common Issues
 
-1. **Google API Key Not Found**
-   - Ensure `GOOGLE_API_KEY` is set in your `.env` file
-   - Restart the application after setting the environment variable
 
-2. **Milvus Connection Issues**
+1. **Milvus Connection Issues**
    - Ensure Milvus is running (or use Docker Compose)
    - Check `MILVUS_HOST` and `MILVUS_PORT` settings
 
-3. **Document Processing Errors**
+2. **Document Processing Errors**
    - Check file format compatibility
    - Ensure files are not corrupted
    - Check available disk space
 
-4. **Streamlit Not Starting**
+3. **Streamlit Not Starting**
    - Ensure all dependencies are installed
    - Check Python version compatibility
    - Try running with `--server.port` option
@@ -281,11 +274,3 @@ For support and questions:
 - Create an issue on GitHub
 - Check the documentation in the `docs/` folder
 - Review the test files for usage examples
-
-## Contributing
-
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

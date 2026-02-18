@@ -15,7 +15,7 @@ class MilvusConfig:
     port: int = int(os.getenv("MILVUS_PORT", "19530"))
     collection_name: str = os.getenv("MILVUS_COLLECTION", "documents")
     embedding_dim: int = int(os.getenv("EMBEDDING_DIM", "384"))
-    index_type: str = "IVF_FLAT"
+    index_type: str = "HNSW"
     metric_type: str = "COSINE"
     nlist: int = 1024
     nprobe: int = 10
